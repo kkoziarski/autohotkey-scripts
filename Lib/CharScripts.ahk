@@ -1,4 +1,4 @@
-#HotIf (g_mode != "subscripts") 
+#HotIf (g_mode = "superscripts")
     >^0:: Send("⁰")
     >^1:: Send("¹")
     >^2:: Send("²")

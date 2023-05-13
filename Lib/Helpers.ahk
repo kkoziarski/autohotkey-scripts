@@ -21,20 +21,15 @@ HideToolTip() {
 
 ; For things that are unique
 ToggleApp(app, location) {
-    if WinExist(app)   
-    {
-        
-        if !WinActive(app)
-        {
+    if WinExist(app) {
+        if !WinActive(app) {
             WinActivate
         }
-        else
-        {
+        else {
             WinMinimize
         }
     }
-    else if location != ""
-    {
+    else if location != "" {
         Run location
     }
 }

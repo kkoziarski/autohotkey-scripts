@@ -2,71 +2,23 @@
 SendMode("Input")
 SetWorkingDir(A_ScriptDir)
 
-SwitchToWindowsTerminal() {
-  windowHandleId := WinExist("ahk_exe WindowsTerminal.exe")
-  windowExistsAlready := windowHandleId > 0
+GroupAdd("editors", "ahk_exe Code.exe")
+GroupAdd("editors", "ahk_exe devenv.exe")
 
-  ; If the Windows Terminal is already open, determine if we should put it in focus or minimize it.
-  if (windowExistsAlready = true)
-  {
-    activeWindowHandleId := WinExist("A")
-    windowIsAlreadyActive := activeWindowHandleId == windowHandleId
-
-    if (windowIsAlreadyActive)
-    {
-      ; Minimize the window.
-      WinMinimize(windowHandleId)
-    }
-    else
-    {
-      ; Put the window in focus.
-      WinActivate(windowHandleId)
-      WinShow(windowHandleId)
-    }
-  }
-  ; Else it's not already open, so launch it.
-  else
-  {
-    Run "wt"
-  }
-}
-; Hotkey to use Win+q to launch/restore the Windows Terminal.
-; #q::SwitchToWindowsTerminal()
-
-SwitchToKeePassXC() {
-  windowHandleId := WinExist("ahk_exe KeePassXC.exe")
-  windowExistsAlready := windowHandleId > 0
-
-  ; If the KeePassXC is already open, determine if we should put it in focus or minimize it.
-  if (windowExistsAlready = true)
-  {
-    activeWindowHandleId := WinExist("A")
-    windowIsAlreadyActive := activeWindowHandleId == windowHandleId
-
-    if (windowIsAlreadyActive)
-    {
-      ; Minimize the window.
-      WinMinimize(windowHandleId)
-    }
-    else
-    {
-      ; Put the window in focus.
-      WinActivate(windowHandleId)
-      WinShow(windowHandleId)
-    }
-  }
-  ; Else it's not already open, so launch it.
-  else
-  {
-    ProgramFilesDir := EnvGet(A_Is64bitOS ? "ProgramW6432" : "ProgramFiles")
-    Run ProgramFilesDir . "\KeePassXC\KeePassXC.exe"
-  }
-}
+GroupAdd("terminal", "ahk_exe WindowsTerminal.exe")
+GroupAdd("terminal", "ahk_exe powershell.exe")
+GroupAdd("terminal", "ahk_exe powershell_ise.exe")
 
 ; Win+q: Run/show/hide Windows Terminal.
-#q::SwitchToWindowsTerminal()
+#q::ToggleApp("ahk_exe WindowsTerminal.exe", "wt")
 ; Win+K: Run/show/hide KeePassXC
-#k::SwitchToKeePassXC()
+#k::ToggleApp("ahk_exe KeePassXC.exe", g_ProgramFilesDir . "\KeePassXC\KeePassXC.exe")
 
-; Run/show/hide KeePassXC using Win+K
-; #K::SwitchToKeePassXC()
+>^x::GroupActivate("terminal", "R")    ; not needed - use Win+Q instead
+>^.::GroupActivate("editors", "R")
+
+; RCtrl+n: Run/show Notepad++
+>^n::ToggleApp("ahk_exe notepad++.exe", "C:\Program Files\Notepad++\notepad++.exe")
+
+; RCtrl+v: Run/show/hide Visual Studio
+>^v::ToggleApp("ahk_exe devenv.exe", "C:\Program Files\Microsoft Visual Studio\2022\Preview\Common7\IDE\devenv.exe")

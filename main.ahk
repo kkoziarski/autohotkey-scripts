@@ -26,6 +26,12 @@ SetTitleMatchMode("RegEx")
 ; Win+Alt+,
 #!,::Edit
 
+
+; globals for ModesModal.ahk
+g_mode := ""
+
+g_ProgramFilesDir := EnvGet(A_Is64bitOS ? "ProgramW6432" : "ProgramFiles")
+
 #Include <Helpers>
 #Include <ModesModal>
 #Include <CharScripts>
@@ -34,34 +40,16 @@ SetTitleMatchMode("RegEx")
 
 #Include dev-key-bindings.ahk
 
-; globals for ModesModal.ahk
-g_mode := ""
-
-GroupAdd("editors", "ahk_exe Code.exe")
-GroupAdd("editors", "ahk_exe devenv.exe")
-
-GroupAdd("terminal", "ahk_exe WindowsTerminal.exe")
-GroupAdd("terminal", "ahk_exe powershell.exe")
-GroupAdd("terminal", "ahk_exe powershell_ise.exe")
-
 GroupAdd("files", "ahk_class CabinetWClass") ; file explorer
 
 GroupAdd("mail", "ahk_exe outlook.exe")
 
 >^m::GroupActivate("mail", "R")
 >^f::GroupActivate("files", "R")
->^x::GroupActivate("terminal", "R")    ; not needed - use Win+Q instead
->^.::GroupActivate("editors", "R")
->^n::ToggleApp("ahk_exe notepad++.exe", "C:\Program Files\Notepad++\notepad++.exe")
->^v::ToggleApp("ahk_exe devenv.exe", "C:\Program Files\Microsoft Visual Studio\2022\Preview\Common7\IDE\devenv.exe")
-
-; available shortcuts
-; >!p::
-; >!l::
 
 ; Format copy as markdown link
 ; 1 - copy URL to clipboard
-; 2 - select text to be link text
+; 2 - select text to be link text.
 #!c::{
     cp_url := A_Clipboard ;current clipboard has url
     A_Clipboard := ""
@@ -103,7 +91,7 @@ GroupAdd("mail", "ahk_exe outlook.exe")
 
 
 ; DEBUG
-<^>!a::MsgBox "You pressed AltGr+a."
+; <^>!a::MsgBox "You pressed AltGr+a."
 
 ; DEBUG
 #HotIf WinActive("ahk_class Notepad")
