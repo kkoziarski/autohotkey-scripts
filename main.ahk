@@ -48,7 +48,7 @@ GroupAdd("mail", "ahk_exe outlook.exe")
 >^m::GroupActivate("mail", "R")
 >^f::GroupActivate("files", "R")
 
-; Format copy as markdown link
+;Win+Alt+c Format copy as markdown link
 ; 1 - copy URL to clipboard
 ; 2 - select text to be link text.
 #!c::{
