@@ -2,6 +2,12 @@
 SendMode("Input")
 SetWorkingDir(A_ScriptDir)
 
+Capslock::Esc
+^!+CapsLock::CapsLock
+NumpadDot::.
+!j::Home
+!k::End
+
 GroupAdd("editors", "ahk_exe Code.exe")
 GroupAdd("editors", "ahk_exe devenv.exe")
 
@@ -21,4 +27,4 @@ GroupAdd("terminal", "ahk_exe powershell_ise.exe")
 >^n::ToggleApp("ahk_exe notepad++.exe", "C:\Program Files\Notepad++\notepad++.exe")
 
 ; RCtrl+v: Run/show/hide Visual Studio
->^v::ToggleApp("ahk_exe devenv.exe", "C:\Program Files\Microsoft Visual Studio\2022\Preview\Common7\IDE\devenv.exe")
+>^>!v::ToggleApp("ahk_exe devenv.exe", "C:\Program Files\Microsoft Visual Studio\2022\Preview\Common7\IDE\devenv.exe")

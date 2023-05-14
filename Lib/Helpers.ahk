@@ -1,9 +1,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;helper functions
 ShowTrayTip(text) {
     TrayTip(text)
-    SetTimer(HideToolTip, -2000)
-    ; Sleep 1000   ; Let it display for 3 seconds.
-    ; HideTrayTip()
+    ; SetTimer(HideToolTip, -2000)
+    Sleep 2000   ; Let it display for 3 seconds.
+    HideTrayTip()
 }
 
 HideTrayTip() {
@@ -15,7 +15,7 @@ HideTrayTip() {
     }
 }
 
-HideToolTip() { 
+HideToolTip() {
     ToolTip()
 }
 

@@ -6,6 +6,7 @@ SetWorkingDir(A_ScriptDir)  ; Ensures a consistent starting directory.
 SetKeyDelay(40)
 SetTitleMatchMode("RegEx")
 
+;LCtrl+RAlt+? - show hotkeys
 <^>!?::ListHotkeys
 
 ; Some notes on hotkey modifier symbols
@@ -38,7 +39,7 @@ g_ProgramFilesDir := EnvGet(A_Is64bitOS ? "ProgramW6432" : "ProgramFiles")
 #Include hotstrings.ahk
 #Include <HotStringAdder>
 
-#Include dev-key-bindings.ahk
+#Include key-bindings.ahk
 
 GroupAdd("files", "ahk_class CabinetWClass") ; file explorer
 
@@ -68,11 +69,11 @@ GroupAdd("mail", "ahk_exe outlook.exe")
 ; Timestamp tracking
 >^d:: {
     TimeString := FormatTime(, "dd/MM/yyyy HH:mm")
-    inputObj := InputBox("Timestamp name", "Timestamp name", "w200 h100")
+    IB := InputBox("Timestamp name", "Timestamp name", "w200 h100")
     timestampfile := A_MyDocuments . "\ahk-timestamps.txt"
-    if inputObj.Result = "OK" {
+    if IB.Result = "OK" {
         ; MsgBox "You entered '" inputObj.value "'." timestampfile
-        t_msg := inputObj.value
+        t_msg := IB.value
         FileAppend(TimeString " " t_msg "`r`n", timestampfile)
         Tooltip("Saved into " timestampfile)
         SetTimer(HideToolTip, -1700)
