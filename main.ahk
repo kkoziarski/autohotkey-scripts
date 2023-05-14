@@ -59,6 +59,14 @@ GroupAdd("mail", "ahk_exe outlook.exe")
     A_Clipboard := "[" . A_Clipboard . "](" . cp_url . ")"
 }
 
+; RCtrl+t - translate selected text
+>^t::{
+    A_Clipboard := ""
+    Send("^c")
+    ClipWait(2)
+    Run("https://www.deepl.com/translator#en/pl/" A_Clipboard)
+}
+
 ;RCtrl+LShift+d show current time
 >^>+d:: {
     TimeString := FormatTime(, "dd/MM HH:mm")
