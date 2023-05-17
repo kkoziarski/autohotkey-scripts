@@ -17,22 +17,12 @@ SetTitleMatchMode("RegEx")
 ; ! = alt
 ; > = RIGHT modifier. >^c is "right ctrl + c" good for not accidentally overriding builtin chords
 
-; !!! IMPORTANT !!!
-; These let you update and reload your config on the fly
-; They are super, SUPER IMPORTANT
-; (They also only work if you're running an .ahk file, not a compiled .exe)
-; Win+Alt+.
-#!.::Reload
-
-; Win+Alt+,
-#!,::Edit
-
-
 ; globals for ModesModal.ahk
 g_mode := ""
 
 g_ProgramFilesDir := EnvGet(A_Is64bitOS ? "ProgramW6432" : "ProgramFiles")
 
+#include ahk-prototype.ahk ; script reloading
 #Include <Helpers>
 #Include <ModesModal>
 #Include <CharScripts>
@@ -43,10 +33,13 @@ g_ProgramFilesDir := EnvGet(A_Is64bitOS ? "ProgramW6432" : "ProgramFiles")
 
 GroupAdd("files", "ahk_class CabinetWClass") ; file explorer
 
-GroupAdd("mail", "ahk_exe outlook.exe")
+GroupAdd("mail", "ahk_exe OUTLOOK.EXE")
+
+GroupAdd("chat", "ahk_exe Teams.exe")
 
 >^m::GroupActivate("mail", "R")
 >^f::GroupActivate("files", "R")
+>^t::GroupActivate("chat", "R")
 
 ;Win+Alt+c Format copy as markdown link
 ; 1 - copy URL to clipboard
@@ -59,8 +52,8 @@ GroupAdd("mail", "ahk_exe outlook.exe")
     A_Clipboard := "[" . A_Clipboard . "](" . cp_url . ")"
 }
 
-; RCtrl+t - translate selected text
->^t::{
+; RCtrl+p - translate selected text
+>^p::{
     A_Clipboard := ""
     Send("^c")
     ClipWait(2)

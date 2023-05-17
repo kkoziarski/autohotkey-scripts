@@ -1,4 +1,4 @@
-^h::  ; RCtrl+h hotkey
+>^h::  ; RCtrl+h hotkey
 {
     ; Get the text currently selected. The clipboard is used instead of
     ; EditGetSelectedText because it works in a greater variety of editors

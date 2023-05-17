@@ -24,7 +24,7 @@ GroupAdd("terminal", "ahk_exe powershell_ise.exe")
 >^.::GroupActivate("editors", "R")
 
 ; RCtrl+n: Run/show Notepad++
->^n::ToggleApp("ahk_exe notepad++.exe", "C:\Program Files\Notepad++\notepad++.exe")
+>^n::ToggleApp("ahk_class Notepad++", "") ;C:\Program Files\Notepad++\notepad++.exe
 
 ; RCtrl+v: Run/show/hide Visual Studio
->^>!v::ToggleApp("ahk_exe devenv.exe", "C:\Program Files\Microsoft Visual Studio\2022\Preview\Common7\IDE\devenv.exe")
+>^>!v::ToggleApp("ahk_exe devenv.exe", "") ;"C:\Program Files\Microsoft Visual Studio\2022\Preview\Common7\IDE\devenv.exe"
