@@ -37,5 +37,6 @@ g_ProgramFilesDir := EnvGet(A_Is64bitOS ? "ProgramW6432" : "ProgramFiles")
 #Include toggle_apps.ahk
 #Include translate_selected_text.ahk
 #Include create_file_here.ahk
+#Include ctrl_caps_as_case_change.ahk
 
 #Include menu_launcher.ahk
