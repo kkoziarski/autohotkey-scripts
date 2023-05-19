@@ -1,7 +1,7 @@
 
-#Warn  ; Enable warnings to assist with detecting common errors.
-#SingleInstance Force ; No others
-SendMode("Input")  ; Recommended for new scripts due to its superior speed and reliability.
+#Warn                       ; Enable warnings to assist with detecting common errors.
+#SingleInstance Force       ; No others
+SendMode("Input")           ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir(A_ScriptDir)  ; Ensures a consistent starting directory.
 SetKeyDelay(40)
 SetTitleMatchMode("RegEx")
@@ -22,83 +22,19 @@ g_mode := ""
 
 g_ProgramFilesDir := EnvGet(A_Is64bitOS ? "ProgramW6432" : "ProgramFiles")
 
-#include ahk-prototype.ahk ; script reloading
 #Include <Helpers>
 #Include <ModesModal>
-#Include <CharScripts>
-#Include hotstrings.ahk
-#Include <HotStringAdder>
+#include ahk_prototype.ahk                  ; script reloading
+#Include hotstrings.ahk                     ; defined hotstrings
+#include hotstring_add_new_modal.ahk        ; add new hotstring dynamically
+#include chars_superscripts_sender.ahk      ; send ² or ₂
 
-#Include key-bindings.ahk
+#Include key_remap.ahk
 
-GroupAdd("files", "ahk_class CabinetWClass") ; file explorer
+#Include copy_as_markdown.ahk
+#Include open_file_in_notepad.ahk
+#Include timestamps.ahk
+#Include toggle_apps.ahk
+#Include translate_selected_text.ahk
 
-GroupAdd("mail", "ahk_exe OUTLOOK.EXE")
-
-GroupAdd("chat", "ahk_exe Teams.exe")
-
->^m::GroupActivate("mail", "R")
->^f::GroupActivate("files", "R")
->^t::GroupActivate("chat", "R")
-
-;Win+Alt+c Format copy as markdown link
-; 1 - copy URL to clipboard
-; 2 - select text to be link text.
-#!c::{
-    cp_url := A_Clipboard ;current clipboard has url
-    A_Clipboard := ""
-    Send("^c")
-    ClipWait(2)
-    A_Clipboard := "[" . A_Clipboard . "](" . cp_url . ")"
-}
-
-; RCtrl+p - translate selected text
->^p::{
-    A_Clipboard := ""
-    Send("^c")
-    ClipWait(2)
-    Run("https://www.deepl.com/translator#en/pl/" A_Clipboard)
-}
-
-;RCtrl+LShift+d show current time
->^>+d:: {
-    TimeString := FormatTime(, "dd/MM HH:mm")
-    Tooltip(TimeString)
-    SetTimer(HideToolTip, -1700)
-}
-
-; Timestamp tracking
->^d:: {
-    TimeString := FormatTime(, "dd/MM/yyyy HH:mm")
-    IB := InputBox("Timestamp name", "Timestamp name", "w200 h100")
-    timestampfile := A_MyDocuments . "\ahk-timestamps.txt"
-    if IB.Result = "OK" {
-        ; MsgBox "You entered '" inputObj.value "'." timestampfile
-        t_msg := IB.value
-        FileAppend(TimeString " " t_msg "`r`n", timestampfile)
-        Tooltip("Saved into " timestampfile)
-        SetTimer(HideToolTip, -1700)
-    }
-}
-
-; RCtrl+o: Open current selected file in notepad
-#HotIf WinActive("ahk_class CabinetWClass")
-    >^o::{
-        A_Clipboard := ""
-        Send("^c")
-        ClipWait(2)
-        Run 'notepad.exe "' A_Clipboard '"'
-    }
-#HotIf
-
-
-; DEBUG
-; <^>!a::MsgBox "You pressed AltGr+a."
-
-; DEBUG
-#HotIf WinActive("ahk_class Notepad")
-    #Space::MsgBox "You pressed Win+Spacebar in Notepad or "
-#HotIf
-
-; >^>!s::ToggleApp("ahk_exe Spotify.exe", "D:\Software\AutoHotKey\Lib\Spotify.lnk")
-
+#Include menu_launcher.ahk
