@@ -1,4 +1,8 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;helper functions
+;;;;;;;;;;;;;;;;;;;;;;;;;;; helper functions
+#SingleInstance Force
+SendMode("Input")
+SetWorkingDir(A_ScriptDir)
+
 ShowTrayTip(text) {
     TrayTip(text)
     ; SetTimer(HideToolTip, -2000)
@@ -57,4 +61,8 @@ PutText(MyText) {
     Sleep(100)
     A_Clipboard := SavedClip
     SavedClip := ""
+}
+
+NoAction(*) {
+    ; Do nothing.
 }

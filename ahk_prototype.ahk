@@ -3,14 +3,14 @@
 ; They are super, SUPER IMPORTANT
 ; (They also only work if you're running an .ahk file, not a compiled .exe)
 
-; Win+Alt+.
+AddShortcut("Reload", "Win+Alt+.")
 #!.::AlertedReload()
 
 Tooltip("<reloaded>")
 Sleep(1000)
 HideToolTip()
 
-; Win+Alt+,
+AddShortcut("Prototyping", "Win+Alt+,")
 #!,::PrototypeFunction()
 
 ;; Reload script with alert.

@@ -1,4 +1,8 @@
-﻿; Create the popup menu by adding some items to it.
+﻿;;;;;;;;;;;;;;;;;;;;;;;;;;; Create the popup menu by adding some items to it.
+#SingleInstance Force       ; No others
+SendMode("Input")           ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir(A_ScriptDir)  ; Ensures a consistent starting directory.
+
 MyMenu := Menu()
 MyMenu.Add("Item 1", MenuHandler)
 MyMenu.Add("Item 2", MenuHandler)
@@ -26,38 +30,4 @@ MenuHandler(ItemName, *) {
     MsgBox "You selected " ItemName
 }
 
-NoAction(*) {
-    ; Do nothing.
-}
-
 #^+z::MyMenu.Show  ; i.e. press the Win-Z hotkey to show the menu.
-
-
-; Menu "Launch_Menu, Add, Assassin's Creed, Launch_Menu_Handler
-; Menu "Launch_Menu, Add, Grid Racing     , Launch_Menu_Handler
-; Menu, Launch_Menu, Add, Deadspace       , Launch_Menu_Handler
-; Menu, Launch_Menu, Add, Silent Hill     , Launch_Menu_Handler
-
-; Menu, Launch_Menu, Show
-
-; Launch_Menu_Handler:
-; {
-;     ; If ( A_ThisMenuItem = "Assassin's Creed" )
-;     ; {
-;     ;     Run, c:\path\to\assassin's creed\game.exe
-;     ; }
-;     ; Else If ( A_ThisMenuItem = "Grid Racing" )
-;     ; {
-;     ;     Run, c:\path\to\grid racing\game.exe
-;     ; }
-;     ; Else If ( A_ThisMenuItem = "Deadspace" )
-;     ; {
-;     ;     Run, c:\path\to\deadspace\game.exe
-;     ; }
-;     ; Else If ( A_ThisMenuItem = "Silent Hill" )
-;     ; {
-;     ;     Run, c:\path\to\slient hill\game.exe
-;     ; }
-;     ExitApp
-; }
-; Return

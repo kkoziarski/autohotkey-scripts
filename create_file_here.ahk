@@ -1,9 +1,9 @@
-﻿; ctrl+shift+m: create empty text file (NewFile.txt) at current folder location in file explorer
-
+﻿;;;;;;;;;;;;;;;;;;;;;;;;;;; ctrl+shift+m: create empty text file (NewFile.txt) at current folder location in file explorer
 #SingleInstance Force       ; No others
 SendMode("Input")           ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir(A_ScriptDir)  ; Ensures a consistent starting directory.
 
+AddShortcut("Create empty text file", "Ctrl+Shift+M")
 #HotIf WinActive("ahk_class CabinetWClass")
 ^+m::newFileHere()
 #HotIf

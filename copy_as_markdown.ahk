@@ -6,9 +6,7 @@ SetWorkingDir(A_ScriptDir)  ; Ensures a consistent starting directory.
 ; 1 - copy URL to clipboard
 ; 2 - select text to be link text.
 #!c::{
-    cp_url := A_Clipboard ;current clipboard has url
-    A_Clipboard := ""
-    Send("^c")
-    ClipWait(2)
+    cp_url := GetSelectedText()
     A_Clipboard := "[" . A_Clipboard . "](" . cp_url . ")"
 }
+AddShortcut("Copy as markdown link", "Win+Alt+C")

@@ -1,4 +1,3 @@
-
 #Warn                       ; Enable warnings to assist with detecting common errors.
 #SingleInstance Force       ; No others
 SendMode("Input")           ; Recommended for new scripts due to its superior speed and reliability.
@@ -6,8 +5,15 @@ SetWorkingDir(A_ScriptDir)  ; Ensures a consistent starting directory.
 SetKeyDelay(40)
 SetTitleMatchMode("RegEx")
 
+g_AllShortcuts := Array() ; global for show_shortcuts & AddShortcut()
+g_mode := "" ; global for ModesModal.ahk
+g_ProgramFilesDir := EnvGet(A_Is64bitOS ? "ProgramW6432" : "ProgramFiles")
+
+; To run all shortcuts view (GUI): RCtrl+/
+
 ;LCtrl+RAlt+? - show hotkeys
-<^>!?::ListHotkeys
+<^>!?::ListHotkeys()
+AddShortcut("AHK List of hotkeys", "LCtrl+RAlt+?")
 
 ; Some notes on hotkey modifier symbols
 ;   (hotkeys are otherwise case insensitive, c:: = C:: ≠ +c::
@@ -16,11 +22,6 @@ SetTitleMatchMode("RegEx")
 ; ^ = ctrl
 ; ! = alt
 ; > = RIGHT modifier. >^c is "right ctrl + c" good for not accidentally overriding builtin chords
-
-; globals for ModesModal.ahk
-g_mode := ""
-
-g_ProgramFilesDir := EnvGet(A_Is64bitOS ? "ProgramW6432" : "ProgramFiles")
 
 #Include <Helpers>
 #Include <ModesModal>
@@ -40,3 +41,4 @@ g_ProgramFilesDir := EnvGet(A_Is64bitOS ? "ProgramW6432" : "ProgramFiles")
 #Include ctrl_caps_as_case_change.ahk
 
 #Include menu_launcher.ahk
+#Include show_shortcuts.ahk

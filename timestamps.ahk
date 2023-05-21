@@ -1,15 +1,16 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;; Show current time && Timestamp tracking
 #SingleInstance Force       ; No others
 SendMode("Input")           ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir(A_ScriptDir)  ; Ensures a consistent starting directory.
 
-;RCtrl+LShift+d show current time
+AddShortcut("Show current time", "RCtrl+LShift+D")
 >^>+d:: {
     TimeString := FormatTime(, "dd/MM HH:mm")
     Tooltip(TimeString)
     SetTimer(HideToolTip, -1700)
 }
 
-; Timestamp tracking
+AddShortcut("Timestamp tracking", "RCtrl+D")
 >^d:: {
     TimeString := FormatTime(, "dd/MM/yyyy HH:mm")
     IB := InputBox("Timestamp name", "Timestamp name", "w200 h100")

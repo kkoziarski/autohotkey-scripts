@@ -1,5 +1,4 @@
-﻿; ctrl+capslock to show text case change menu 
-
+﻿;;;;;;;;;;;;;;;;;;;;;;;;;;; ctrl+capslock to show text case change menu
 #SingleInstance Force       ; No others
 SendMode("Input")           ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir(A_ScriptDir)  ; Ensures a consistent starting directory.
@@ -18,6 +17,7 @@ CaseConvertMenu.Add("Reverse", CapsMenuHandler)
 
 g_case_TempText := ""
 
+AddShortcut("Open case-change menu", "Ctrl+CapsLock")
 ^CapsLock::{
    global g_case_TempText
    g_case_TempText := GetSelectedText()
