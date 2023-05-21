@@ -50,32 +50,7 @@ CapsMenuHandler(ItemName, *) {
       Temp2 := StrReplace(Temp2, Chr(29), "`r`n")
       g_case_TempText := Temp2
    }
-   PasteText(g_case_TempText)
-}
-
-; Handy function.
-; Copies the selected text to a variable while preserving the clipboard.
-GetSelectedText() {
-   SavedClip := ClipboardAll()
-   A_Clipboard := ""
-   Send("^c")
-   ClipWait(2)
-   TempText := A_Clipboard
-   A_Clipboard := SavedClip
-   SavedClip := ""
-   Return TempText
-}
-
-; Pastes text from a variable while preserving the clipboard.
-PasteText(MyText) {
-   SavedClip := ClipboardAll()
-   A_Clipboard := ""           ; For better compatability
-   Sleep(20)                   ; with Clipboard History
-   A_Clipboard := MyText
-   Send("^v")
-   Sleep(100)
-   A_Clipboard := SavedClip
-   SavedClip := ""
+   PutText(g_case_TempText)
 }
 
 ; Original: https://github.com/GorvGoyl/Autohotkey-Scripts-Windows/blob/master/ctrl_caps_as_case_change.ahk
