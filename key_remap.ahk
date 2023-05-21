@@ -4,6 +4,7 @@ SetWorkingDir(A_ScriptDir)
 
 Capslock::Esc
 +CapsLock::CapsLock
+^+#S::PrintScreen
 NumpadDot::.
 !j::Home
 !k::End
