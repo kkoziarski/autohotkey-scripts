@@ -14,8 +14,7 @@ CaseConvertMenu.Add()  ; Add a separator line.
 CaseConvertMenu.Add("Fix Linebreaks", CapsMenuHandler)
 CaseConvertMenu.Add("Reverse", CapsMenuHandler)
 
-CaseConvertMenu.Disable("Fix Linebreaks")
-CaseConvertMenu.Disable("Reverse")
+; CaseConvertMenu.Disable("Fix Linebreaks")
 
 g_case_TempText := ""
 
@@ -26,9 +25,7 @@ g_case_TempText := ""
 }
 
 CapsMenuHandler(ItemName, *) {
-   ; g_case_TempText := g_case_TempText
    global g_case_TempText
-   ; Tooltip("copied text" g_case_TempText)
    If (ItemName = "&UPPERCASE")
       g_case_TempText := StrUpper(g_case_TempText)
    Else If (ItemName = "&lowercase")
@@ -50,7 +47,8 @@ CapsMenuHandler(ItemName, *) {
       g_case_TempText := StrReplace(g_case_TempText, "`r`n", Chr(29))
       Loop Parse, g_case_TempText
          Temp2 := A_LoopField . Temp2
-      Temp2 := StrReplace(g_case_TempText, Chr(29), "`r`n")
+      Temp2 := StrReplace(Temp2, Chr(29), "`r`n")
+      g_case_TempText := Temp2
    }
    PasteText(g_case_TempText)
 }
