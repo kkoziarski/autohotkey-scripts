@@ -14,7 +14,7 @@ CreateShortcustView() {
     ShortcutsGui.OnEvent('Escape', (*) => ShortcutsGui.Destroy())
 
     ; Create the ListView with two columns, Description and Shortcut:
-    ShortcutsLV := ShortcutsGui.Add("ListView", "r25 w300", ["Description","Shortcut"])
+    ShortcutsLV := ShortcutsGui.Add("ListView", "+Sort r30 w340", ["Description", "Shortcut"])
     
     For item in g_AllShortcuts
         ShortcutsLV.Add(, item.Name, item.Shortcut)
