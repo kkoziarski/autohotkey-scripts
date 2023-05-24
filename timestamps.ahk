@@ -3,7 +3,7 @@
 SendMode("Input")           ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir(A_ScriptDir)  ; Ensures a consistent starting directory.
 
-AddShortcut("Show current time", "RCtrl+LShift+D")
+AddShortcut("Show current time", "RCtrl+RShift+D")
 >^>+d:: {
     TimeString := FormatTime(, "dd/MM HH:mm")
     Tooltip(TimeString)

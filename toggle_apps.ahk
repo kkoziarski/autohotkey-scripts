@@ -34,10 +34,10 @@ AddShortcut("Show/Hide Visual Studio", "RCtrl+RAlt+V")
 AddShortcut("Activate outlook", "RCtrl+M")
 >^m::GroupActivate("mail", "R")
 
-AddShortcut("Activate File Explorer", "RCtrl+M")
+AddShortcut("Activate File Explorer", "RCtrl+F")
 >^f::GroupActivate("files", "R")
 
-AddShortcut("Activate Teams", "RCtrl+M")
+AddShortcut("Activate Teams", "RCtrl+T")
 >^t::GroupActivate("chat", "R")
 
 ; >^>!s::ToggleApp("ahk_exe Spotify.exe", "D:\Software\AutoHotKey\Lib\Spotify.lnk")
