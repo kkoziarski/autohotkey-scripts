@@ -38,7 +38,8 @@ AddShortcut("AHK List of hotkeys", "LCtrl+RAlt+?")
 #Include toggle_apps.ahk
 #Include translate_selected_text.ahk
 #Include create_file_here.ahk
-#Include ctrl_caps_as_case_change.ahk
+#Include case_change_menu.ahk
+#Include search_selected_text.ahk
 
 #Include menu_launcher.ahk
 #Include show_shortcuts.ahk
