@@ -2,15 +2,13 @@
 
 Scripts for AutoHotkey v2.
 
-Entry point: `main.ahk`
-
-
+Entry point: [main.ahk](./main.ahk)
 
 
 ## Functions and shortcuts list: `RCtrl+/`
 ![][ahk_shortcuts_list]
 
-## Case change menu: `Ctrl+CapsLock`
+## Case-change menu: `Ctrl+CapsLock`
 ![][ahk_context_menu_case]
 
 [ahk_shortcuts_list]:
