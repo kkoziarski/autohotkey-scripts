@@ -41,5 +41,5 @@ AddShortcut("AHK List of hotkeys", "LCtrl+RAlt+?")
 #Include case_change_menu.ahk
 #Include search_selected_text.ahk
 
-#Include menu_launcher.ahk
+; #Include menu_launcher.ahk
 #Include show_shortcuts.ahk

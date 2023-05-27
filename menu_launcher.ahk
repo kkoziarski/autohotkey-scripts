@@ -1,4 +1,4 @@
-﻿;;;;;;;;;;;;;;;;;;;;;;;;;;; Create the popup menu by adding some items to it.
+﻿;;;;;;;;;;;;;;;;;;;;;;;;;;; POC - Create the popup menu by adding some items to it.
 #SingleInstance Force       ; No others
 SendMode("Input")           ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir(A_ScriptDir)  ; Ensures a consistent starting directory.
