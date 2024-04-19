@@ -19,6 +19,9 @@ AddShortcut("Run/show/hide Windows Terminal", "Win+Q")
 AddShortcut("Run/show/hide KeePassXC", "Win+K")
 #k::ToggleApp("ahk_exe KeePassXC.exe", g_ProgramFilesDir . "\KeePassXC\KeePassXC.exe")
 
+AddShortcut("Activate Bluetooth", "Win+B")
+#b::Run("ms-settings:connecteddevices") ;%windir%\explorer.exe ms-settings:bluetooth
+
 AddShortcut("Activate terminal", "RCtrl+X")
 >^x::GroupActivate("terminal", "R")    ; not needed - use Win+Q instead
 

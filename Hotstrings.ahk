@@ -1,10 +1,12 @@
-#SingleInstance Force
-SendMode("Input")
-SetWorkingDir(A_ScriptDir)
+;;;;;;;;;;;;;;;;;;;;;;;;;;; define hotstrings here
+#SingleInstance Force       ; No others
+SendMode("Input")           ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir(A_ScriptDir)  ; Ensures a consistent starting directory.
 
 
 ; :*:kk@::krzyhook@gmail.com
-:T:kk@::krzyhook@gmail.com
+:T:kk@::myemail@gmail.com
+:T:kki@::myotheremail@gmail.com
 
 ::btw::by the way
 
