@@ -9,7 +9,7 @@ AddShortcut("Rebind", "Shift+CapsLock=>CapsLock")
 +CapsLock::CapsLock
 AddShortcut("Rebind", "Ctrl+Shift+Win+S=>PrintScreen")
 ^+#S::PrintScreen
-+#F8::PrintScreen
+;+#F8::PrintScreen
 NumpadDot::.
 AddShortcut("Rebind", "Alt+J=>Home")
 !j::Home

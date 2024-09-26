@@ -11,7 +11,7 @@ GroupAdd("terminal", "ahk_exe powershell_ise.exe")
 
 GroupAdd("files", "ahk_class CabinetWClass") ; file explorer
 GroupAdd("mail", "ahk_exe OUTLOOK.EXE")
-GroupAdd("chat", "ahk_exe Teams.exe")
+GroupAdd("chat", "ahk_exe ms-teams.exe")
 
 AddShortcut("Run/show/hide Windows Terminal", "Win+Q")
 #q::ToggleApp("ahk_exe WindowsTerminal.exe", "wt")
