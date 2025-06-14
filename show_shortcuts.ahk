@@ -3,16 +3,16 @@
 SendMode("Input")           ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir(A_ScriptDir)  ; Ensures a consistent starting directory.
 
-AddShortcut("Show shortcuts (this)", "RCtrl+/")
->^/::CreateShortcustView()
+AddShortcut("_ Show shortcuts (this)", "RCtrl+/")
+>^/::CreateShortcutsView()
 
 ; Create the window:
-CreateShortcustView() {
+CreateShortcutsView() {
     ShortcutsGui := Gui("+ToolWindow -Theme", "Shortcuts list")
     ShortcutsGui.OnEvent('Escape', (*) => ShortcutsGui.Destroy())
 
     ; Create the ListView with two columns, Description and Shortcut:
-    ShortcutsLV := ShortcutsGui.Add("ListView", "+Sort r30 w340", ["Description", "Shortcut"])
+    ShortcutsLV := ShortcutsGui.Add("ListView", "+Sort r32 w350", ["Description", "Shortcut"])
     
     For item in g_AllShortcuts
         ShortcutsLV.Add(, item.Name, item.Shortcut)

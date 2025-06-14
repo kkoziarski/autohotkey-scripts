@@ -3,7 +3,7 @@
 ; They are super, SUPER IMPORTANT
 ; (They also only work if you're running an .ahk file, not a compiled .exe)
 
-AddShortcut("Reload", "Win+Alt+.")
+AddShortcut("_ Reload", "Win+Alt+.")
 #!.::AlertedReload()
 
 Tooltip("<reloaded>")
