@@ -36,6 +36,7 @@ AddShortcut("AHK List of hotkeys", "LCtrl+RAlt+?")
 #Include open_file_in_notepad.ahk
 #Include timestamps.ahk
 #Include toggle_apps.ahk
+#Include toggle_display.ahk
 #Include translate_selected_text.ahk
 #Include create_file_here.ahk
 #Include case_change_menu.ahk
