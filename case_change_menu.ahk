@@ -12,6 +12,7 @@ CaseConvertMenu.Add("&Sentence case", CapsMenuHandler)
 CaseConvertMenu.Add()  ; Add a separator line.
 CaseConvertMenu.Add("Fix Linebreaks", CapsMenuHandler)
 CaseConvertMenu.Add("Reverse", CapsMenuHandler)
+CaseConvertMenu.Add("Convert Numbers", CapsMenuHandler)
 
 ; CaseConvertMenu.Disable("Fix Linebreaks")
 
@@ -49,6 +50,13 @@ CapsMenuHandler(ItemName, *) {
          Temp2 := A_LoopField . Temp2
       Temp2 := StrReplace(Temp2, Chr(29), "`r`n")
       g_case_TempText := Temp2
+   }
+   Else If (ItemName = "Convert Numbers")
+   {
+      ; Remove spaces between digits
+      g_case_TempText := RegExReplace(g_case_TempText, "(\d)[\s\h](?=\d)", "$1")
+      ; Replace comma with dot between digits
+      g_case_TempText := RegExReplace(g_case_TempText, "(\d),(?=\d)", "$1.")
    }
    PutText(g_case_TempText)
 }
