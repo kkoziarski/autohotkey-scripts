@@ -1,3 +1,4 @@
+#Requires AutoHotkey v2.0
 #Warn                       ; Enable warnings to assist with detecting common errors.
 #SingleInstance Force       ; No others
 SendMode("Input")           ; Recommended for new scripts due to its superior speed and reliability.
@@ -33,6 +34,7 @@ AddShortcut("AHK List of hotkeys", "LCtrl+RAlt+?")
 #Include key_remap.ahk
 
 #Include copy_as_markdown.ahk
+#Include copy_selected_file_paths.ahk
 #Include open_file_in_notepad.ahk
 #Include timestamps.ahk
 #Include toggle_apps.ahk
@@ -43,6 +45,7 @@ AddShortcut("AHK List of hotkeys", "LCtrl+RAlt+?")
 #Include search_selected_text.ahk
 #Include audio_device_switcher.ahk
 #Include convert_numbers.ahk
+#Include paste_join_lines.ahk
 
 ; #Include menu_launcher.ahk
 #Include show_shortcuts.ahk
